@@ -1,0 +1,30 @@
+#! /usr/bin/env node
+
+// console.log('jqb-cli')
+
+// 1) 配置可执行命令
+const program = require('commander')
+
+// 核心功能 1. 创建项目 2. 更改配置文件 3.UI界面 @vue/ui
+
+// 万一重名了呢？ 强制创建的模式
+program
+  .command(`create <app-name>`)
+  .description(`create a new project`)
+  .option('-f, --force', 'overwrite target directory if it exists')
+  .action((name, cmd) => {
+    console.log(name, cmd)
+  })
+
+
+program
+  .version(`jqb-cli@${require('../package.json').version}`)
+  .usage(`<command> [option]`)
+
+// 解析用户执行命令传入的参数
+program.parse(process.argv)
+// 2) 我们要实现脚手架 先做一个命令行交互的功能 inquirer
+
+// 3）将模板下载下来 download-git-repo
+
+// 4) 根据用户的选择动态的生成内容 metalsmith
